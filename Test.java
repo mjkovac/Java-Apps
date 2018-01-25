@@ -1,27 +1,27 @@
 import java.util.Random;
 
-enum Suite { HEART, SPADE, DIAMOND, CLUB; }
+enum Suit { HEART, SPADE, DIAMOND, CLUB; }
 
 class Deck {
-	Cards c[][] = new Cards[13][4];
+	Cards c[][] = new Cards[13][4]; //allocate memory for 52 cards (13 numbers * 4 suits = 52 total unique cards)
 	
 	Deck() {
 		for (int i = 0; i < 13; i++) {
-			for (int j = 0; j < 4; j++) {
-				c[i][j] = new Cards();
-				c[i][j].setNumber(i+1);
+			for (int j = 0; j < 4; j++) { //loop for every card in the deck
+				c[i][j] = new Cards(); //construct a new card
+				c[i][j].setNumber(i+1); //numbers should go from 1-13, 1 being ACE and 13 being KING
 				
 				if 		( j == 0 )
-					c[i][j].setSuite(Suite.HEART);
+					c[i][j].setSuit(Suit.HEART);
 				
 				else if ( j == 1 )
-					c[i][j].setSuite(Suite.CLUB);
+					c[i][j].setSuit(Suit.CLUB);
 				
 				else if ( j == 2 )
-					c[i][j].setSuite(Suite.SPADE);
+					c[i][j].setSuit(Suit.SPADE);
 				
 				else if ( j == 3 )
-					c[i][j].setSuite(Suite.DIAMOND);
+					c[i][j].setSuit(Suit.DIAMOND);
 			}
 			
 		}
@@ -53,7 +53,7 @@ class Deck {
 
 class Cards {
 	private int number;
-	private Suite s;
+	private Suit s;
 	
 	Cards() {
 		this.number = 0;
@@ -63,19 +63,19 @@ class Cards {
 	void setNumber(int number) {
 		this.number = number;
 	}
-	void setSuite(Suite s) {
+	void setSuit(Suit s) {
 		this.s = s;
 	}
 	int getNumber() {
 		return this.number;
 	}
-	Suite getSuite() {
+	Suit getSuit() {
 		return this.s;
 	}
 	
 	@Override
 	public String toString() {
-		String o = "Number: " + getNumber() + " and suite: " + getSuite();
+		String o = "Number: " + getNumber() + " and suite: " + getSuit();
 		return o;
 	}
 }
